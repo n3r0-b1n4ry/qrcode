@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <!--=============== FAVICON ===============-->
+    <link rel="icon" type="image/x-icon" href="../resource/img/qr.ico" />
+    <!--=============== ICON ===============-->
+    <link
+      href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <!--===============  ===============-->
+
+    <title>Qrcode</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="./styles/home.css" />
+  </head>
+  <body>
+    <!-- ========================= header start ====================== -->
+    <header class="header">
+      <div class="container_title_logo">
+        <div class="container_logo">
+          <img src="../resource/img/qr.png" />
+        </div>
+        <h1 class="title_head">QR Code</h1>
+      </div>
+      <nav class="container_nav">
+        <li><a href="#home">home</a></li>
+        <li><a href="#about">about</a></li>
+        <li><a href="#blog">blog</a></li>
+        <li><a href="#resource">resource</a></li>
+      </nav>
+      <div class="container_menu">
+        <i class="bx bx-menu"></i>
+      </div>
+    </header>
+    <!-- ========================= header end ====================== -->
+    <!-- =========================== home start ================ -->
+    <section class="home">
+      <div class="container_left_input">
+        <div class="container_menu_type_left">
+          <div class="container_qr_type" data-name="type_1">
+            <i class="bx bx-link"></i>
+            <span>url</span>
+          </div>
+          <div class="container_qr_type" data-name="type_2">
+            <i class="bx bxs-id-card"></i>
+            <span>vcard</span>
+          </div>
+          <div class="container_qr_type" data-name="type_3">
+            <i class="bx bxs-file-txt"></i>
+            <span>text</span>
+          </div>
+          <div class="container_qr_type" data-name="type_4">
+            <i class="bx bx-envelope"></i>
+            <span>email</span>
+          </div>
+          <div class="container_qr_type" data-name="type_5">
+            <i class="bx bx-wifi"></i>
+            <span>wifi</span>
+          </div>
+          <div class="container_qr_type" data-name="type_6">
+            <i class="bx bxl-facebook-circle"></i>
+            <span>facebook</span>
+          </div>
+          <div class="container_qr_type" data-name="type_7">
+            <i class="bx bxs-file-pdf"></i>
+            <span>pdf</span>
+          </div>
+          <div class="container_qr_type" data-name="type_8">
+            <i class="bx bxs-file-image"></i>
+            <span>image</span>
+          </div>
+        </div>
+        <div class="container_menu_input_right">
+          <div
+            id="url"
+            class="container_input_type_url container_input_type"
+            data-target="type_1"
+          >
+            <textarea
+              name="url"
+              id="url"
+              cols="30"
+              rows="10"
+              placeholder="Enter your website"
+            ></textarea>
+            <button class="genergate" id="butt_genergate_url">
+              <i class="bx bx-sync"></i>genergate qr code
+            </button>
+          </div>
+          <div
+            class="container_input_type_vcard container_input_type"
+            data-target="type_2"
+          >
+            <div class="container_input_row">
+              <span>your name: </span>
+              <div class="col_chill">
+                <input id="first_name" type="text" placeholder="firt name" />
+                <input id="last_name" type="text" placeholder="last name" />
+              </div>
+            </div>
+            <div class="container_input_row">
+              <span>contact: </span>
+              <div class="col_chill">
+                <input id="mobile" type="text" placeholder="mobile" />
+                <input id="phone" type="number" placeholder="phone" />
+                <input id="fax" type="text" placeholder="fax" />
+              </div>
+            </div>
+            <div class="container_input_row">
+              <span>email:</span>
+              <div class="col_chill">
+                <input
+                  id="email"
+                  type="email"
+                  placeholder="your@email.com"
+                  class="count_elemt_1"
+                />
+              </div>
+            </div>
+            <div class="container_input_row">
+              <span>company:</span>
+              <div class="col_chill">
+                <input id="company" type="text" placeholder="company" />
+                <input id="job" type="text" placeholder="your job" />
+              </div>
+            </div>
+            <div class="container_input_row">
+              <span>street:</span>
+              <div class="col_chill">
+                <input id="street" type="text" placeholder="street" class="count_elemt_1" />
+              </div>
+            </div>
+            <div class="container_input_row">
+              <span>city:</span>
+              <div class="col_chill">
+                <input id="city" type="text" />
+                <input id="zip" type="text" placeholder="ZIP" />
+              </div>
+            </div>
+            <div class="container_input_row">
+              <span>state:</span>
+              <div class="col_chill">
+                <input id="state" type="text" class="count_elemt_1" />
+              </div>
+            </div>
+            <div class="container_input_row">
+              <span>country:</span>
+              <div class="col_chill">
+                <input id="country" type="text" class="count_elemt_1" />
+              </div>
+            </div>
+            <div class="container_input_row">
+              <span>website:</span>
+              <div class="col_chill">
+                <input
+                  id="website"
+                  type="text"
+                  placeholder="www.your-website.com"
+                  class="count_elemt_1"
+                />
+              </div>
+            </div>
+            <button class="genergate" id="butt_genergate_vcard">
+              <i class="bx bx-sync"></i>genergate qr code
+            </button>
+          </div>
+          <div
+            class="container_input_type_text container_input_type"
+            data-target="type_3"
+          >
+            <textarea
+              name="url"
+              id="text"
+              cols="30"
+              rows="10"
+              placeholder="Enter your text"
+            ></textarea>
+            <button class="genergate" id="butt_genergate_text">
+              <i class="bx bx-sync"></i>genergate qr code
+            </button>
+          </div>
+          <div
+            class="container_input_type_email container_input_type"
+            data-target="type_4"
+          >
+            <div class="container_input_row">
+              <span>email:</span>
+              <div class="col_chill">
+                <input type="email" placeholder="your email" />
+              </div>
+            </div>
+            <div class="container_input_row">
+              <span>suject:</span>
+              <div class="col_chill">
+                <input type="text" placeholder="enter email subject" />
+              </div>
+            </div>
+            <div class="container_input_row">
+              <span>message:</span>
+              <div class="col_chill">
+                <textarea
+                  name="message"
+                  id="mess"
+                  cols="30"
+                  rows="10"
+                  placeholder="enter your message"
+                ></textarea>
+              </div>
+            </div>
+            <button class="genergate" id="butt_genergate_email">
+              <i class="bx bx-sync"></i>genergate qr code
+            </button>
+          </div>
+          <div
+            class="container_input_type_wifi container_input_type"
+            data-target="type_5"
+          >
+            <div class="container_input_row">
+              <span>network name:</span>
+              <div class="col_chill">
+                <input type="text" placeholder="SSID" />
+                <label for="check">
+                  <input type="checkbox" class="check hidden" />
+                  hidden
+                </label>
+              </div>
+            </div>
+            <div class="container_input_row">
+              <span>password:</span>
+              <div class="col_chill">
+                <input type="text" placeholder="password" />
+              </div>
+            </div>
+            <div class="container_input_row">
+              <span>encryption:</span>
+              <div class="col_chill">
+                <label for="check">
+                  <input name="select" value="10" type="radio" class="check" />
+                  none
+                </label>
+                <label for="check">
+                  <input name="select" value="20" type="radio" class="check" />
+                  WPA/WPA2
+                </label>
+                <label for="check">
+                  <input name="select" value="30" type="radio" class="check" />
+                  WEP
+                </label>
+              </div>
+            </div>
+            <button class="genergate" id="butt_genergate_wifi">
+              <i class="bx bx-sync"></i>genergate qr code
+            </button>
+          </div>
+          <div
+            class="container_input_type_facebook container_input_type"
+            data-target="type_6"
+          >
+            <div class="container_input_row">
+              <span>facebook URL:</span>
+              <div class="col_chill">
+                <input type="text" placeholder="www.facebook.com/yourpage" />
+                <label for="check">
+                  <input type="checkbox" class="check" />
+                  hide the numeber of like on the like button
+                </label>
+              </div>
+            </div>
+            <div class="container_input_row">
+              <span>name:</span>
+              <div class="col_chill">
+                <input
+                  type="text"
+                  placeholder="company, brand or artist who runs the facebook page"
+                />
+              </div>
+            </div>
+            <div class="container_input_row">
+              <span>title:</span>
+              <div class="col_chill">
+                <input type="text" placeholder="your title" />
+              </div>
+            </div>
+            <div class="container_input_row">
+              <span>website:</span>
+              <div class="col_chill">
+                <input type="text" placeholder="www.yourwebsite.com" />
+              </div>
+            </div>
+            <button class="genergate" id="butt_genergate_facebook">
+              <i class="bx bx-sync"></i>genergate qr code
+            </button>
+          </div>
+          <div
+            class="container_input_type_pdf container_input_type"
+            data-target="type_7"
+          >
+            <div class="container_input_row">
+              <span id="file_title">file pdf:</span>
+              <div class="col_chill">
+                <input type="file" id="file" accept=".pdf" />
+                <label for="upfile">
+                  upload file pdf
+                  <button id="butt_up_file">upload pdf</button>
+                </label>
+              </div>
+            </div>
+            <div class="container_input_row">
+              <span>company:</span>
+              <div class="col_chill">
+                <input type="text" placeholder="name of company or PDF owner" />
+              </div>
+            </div>
+            <div class="container_input_row">
+              <span>tille:</span>
+              <div class="col_chill">
+                <input type="text" placeholder="title or PDF name" />
+              </div>
+            </div>
+            <div class="container_input_row">
+              <span>description:</span>
+              <div class="col_chill">
+                <textarea
+                  name="description"
+                  id="description"
+                  cols="30"
+                  rows="10"
+                  placeholder="provide more info about your PDF"
+                ></textarea>
+              </div>
+            </div>
+            <div class="container_input_row">
+              <span>website:</span>
+              <div class="col_chill">
+                <input type="text" placeholder="www.yourwebsite.com" />
+              </div>
+            </div>
+            <button class="genergate" id="butt_genergate_pdf">
+              <i class="bx bx-sync"></i>genergate qr code
+            </button>
+          </div>
+          <div
+            class="container_input_type_img container_input_type"
+            data-target="type_8"
+          >
+            <div class="container_input_row">
+              <span id="file_title">image:</span>
+              <div class="col_chill">
+                <input type="image" id="image" accept=".jpg .png " />
+                <label for="upimage">
+                  drag and drop images here
+                  <button id="butt_up_img">upload image</button>
+                </label>
+              </div>
+            </div>
+            <div class="container_input_row">
+              <span>tille:</span>
+              <div class="col_chill">
+                <input type="text" placeholder="title for your gallery" />
+              </div>
+            </div>
+            <div class="container_input_row">
+              <span>description:</span>
+              <div class="col_chill">
+                <textarea
+                  name="description"
+                  id="description"
+                  cols="30"
+                  rows="10"
+                  placeholder="more information ablout your gallery"
+                ></textarea>
+              </div>
+            </div>
+            <div class="container_input_row">
+              <span>website:</span>
+              <div class="col_chill">
+                <input type="text" placeholder="www.yourwebsite.com" />
+              </div>
+            </div>
+            <button class="genergate" id="butt_genergate_image">
+              <i class="bx bx-sync"></i>
+              genergate qr code
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="container_right_output">
+        <div class="border_efect_2">
+          <img
+            id="efect_2"
+            src="../resource/img/technical-support.png"
+            alt=""
+          />
+        </div>
+        <div class="container_img_qr">
+          <img src="../resource/img/qr-code.png" alt="" />
+        </div>
+      </div>
+      <img
+        src="../resource/img/undraw_air_support_re_nybl.svg"
+        alt=""
+        id="efect_1"
+      />
+    </section>
+
+    <script src="./js/controller_event.js"></script>
+    <script src="./js/controller.js"></script>
+  </body>
+</html>
