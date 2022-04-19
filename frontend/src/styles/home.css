@@ -613,17 +613,17 @@ body {
 }
 
 .home .container_right_output .container_img_qr {
+  overflow: hidden;
   width: 100%;
-  height: 200px;
+  height: 100%;
   text-align: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 2rem 0 0 0;
 }
 
-.home .container_right_output .container_img_qr img {
-  width: 30%;
+.home .container_right_output .container_img_qr #qr {
+  width: 80%;
 }
 
 .home .container_right_output .border_efect_2 {

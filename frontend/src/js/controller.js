@@ -41,10 +41,12 @@ let url_fb = document.querySelector('.home .container_left_input .container_menu
 let name_fb = document.querySelector('.home .container_left_input .container_menu_input_right .container_input_type .container_input_row .col_chill #name_fb');
 let title_fb = document.querySelector('.home .container_left_input .container_menu_input_right .container_input_type .container_input_row .col_chill #title_fb');
 let website_fb = document.querySelector('.home .container_left_input .container_menu_input_right .container_input_type .container_input_row .col_chill #website_fb');
-
+// ================ ===============
+let img_qr = document.querySelector('.home .container_right_output .container_img_qr #qr')
 
 // ======== event genergate =========
 butt_genergate_url.addEventListener('click', send_url);
+// butt_genergate_url.addEventListener('click', get_Data);
 butt_genergate_vcard.addEventListener('click', send_vcard);
 butt_genergate_text.addEventListener('click', send_text);
 butt_genergate_email.addEventListener('click', send_email);
@@ -62,6 +64,7 @@ function send_url() {
     }
     //    console.log(JSON.stringify(send_url))
     reqapi(send_url)
+
 }
 // ========== funct vcard ========
 function send_vcard() {
@@ -189,6 +192,25 @@ function send_fb() {
 // ========= func send req api =============
 function reqapi(data) {
     let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = () => {
+        let qrcode = JSON.parse(xhttp.response);
+        setTimeout(()=>{
+            document.getElementById('qr').src = 'data:image/jpeg;base64,' + qrcode['img'];
+        },1000);
+    }
     xhttp.open("POST", "http://127.0.0.1:8888/submit", true);
     xhttp.send(JSON.stringify(data));
+
+
 }
+
+// function get_Data() {
+//     setTimeout(() => {
+//         let xhr = new XMLHttpRequest();
+//         xhr.open('GET', 'http://127.0.0.1:8888/submit');
+//         xhr.onload = () => {
+//             console.log(qrcode);
+//         }
+//         xhr.send()
+//     }, 1000)
+// };
