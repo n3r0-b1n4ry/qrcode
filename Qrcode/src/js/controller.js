@@ -61,6 +61,14 @@ function send_url() {
         }
     }
     //    console.log(JSON.stringify(send_url))
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText)
+        }
+    };
+    xhttp.open("POST","successed", true);
+    xhttp.send(JSON.stringify(send_url));
 }
 // ========== funct vcard ========
 function send_vcard() {
@@ -89,6 +97,14 @@ function send_vcard() {
         }
     }
     //    console.log(JSON.stringify(send_vcard))
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText)
+        }
+    };
+    xhttp.open("POST","successed", true);
+    xhttp.send(JSON.stringify(send_vcard));
 }
 // ============= funct text ========
 function send_text() {
@@ -99,6 +115,14 @@ function send_text() {
         }
     }
     //    console.log(JSON.stringify(send_text))
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText)
+        }
+    };
+    xhttp.open("POST","successed", true);
+    xhttp.send(JSON.stringify(send_text));
 }
 
 // ==============funct email ===============
@@ -112,6 +136,14 @@ function send_email() {
         }
     }
     // console.log(JSON.stringify(send_email))
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText)
+        }
+    };
+    xhttp.open("POST","successed", true);
+    xhttp.send(JSON.stringify(send_email));
 }
 
 // =============== funct network ============
@@ -164,6 +196,14 @@ function send_wifi() {
         }
         // console.log(JSON.stringify(send_wifi));
     }
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText)
+        }
+    };
+    xhttp.open("POST","successed", true);
+    xhttp.send(JSON.stringify(send_wifi))
 }
 
 // ======== funct facebook ==========
@@ -178,4 +218,12 @@ function send_fb() {
         }
     }
     // console.log(JSON.stringify(send_fb))
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText)
+        }
+    };
+    xhttp.open("POST","successed", true);
+    xhttp.send(JSON.stringify(send_fb));
 }
