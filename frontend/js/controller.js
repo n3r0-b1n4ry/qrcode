@@ -148,29 +148,15 @@ function sel_WEP() {
 
 
 function send_wifi() {
-    if (hidden_par == 1) {
-        let send_wifi = {
-            'type': 'wifi',
-            'data': {
-                'network_name': btoa(network_name.value),
-                'password': btoa(password.value),
-                'hidden': btoa('true'),
-                'encryption': btoa(select_encryption)
-            }
+    let send_wifi = {
+        'type': 'wifi',
+        'data': {
+            'network_name': btoa(network_name.value),
+            'password': btoa(password.value),
+            'encryption': btoa(select_encryption)
         }
-        console.log(JSON.stringify(send_wifi));
-    } else if (hidden_par == 0) {
-        let send_wifi = {
-            'type': 'wifi',
-            'data': {
-                'network_name': btoa(network_name.value),
-                'password': btoa(password.value),
-                'hidden': btoa('false'),
-                'encryption': btoa(select_encryption)
-            }
-        }
-        // console.log(JSON.stringify(send_wifi));
     }
+    // console.log(JSON.stringify(send_wifi));
     reqapi(send_wifi)
 }
 
@@ -194,9 +180,7 @@ function reqapi(data) {
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = () => {
         let qrcode = JSON.parse(xhttp.response);
-        setTimeout(()=>{
-            document.getElementById('qr').src = 'data:image/jpeg;base64,' + qrcode['img'];
-        },1000);
+        document.getElementById('qr').src = 'data:image/png;base64,' + qrcode['img'];
     }
     xhttp.open("POST", "http://127.0.0.1:8888/submit", true);
     xhttp.send(JSON.stringify(data));
