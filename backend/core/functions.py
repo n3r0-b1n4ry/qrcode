@@ -8,6 +8,7 @@ from qrcode.image.styles.colormasks import *
 from core.image_proc import *
 
 import datetime
+import hashlib
 
 qr = qrcode.QRCode(
     version=4,
@@ -17,10 +18,12 @@ qr = qrcode.QRCode(
 )
 
 def genURL(data):
+    h = hashlib.md5()
+    h.update(datetime.datetime.now().strftime("%d_%m_%Y_%H_%M_%S_%f"))
     img = qr.make(data)
     #type(img)
     img = qr.make_image(image_factory= StyledPilImage, module_drawer=CircleModuleDrawer(), color_mask=SquareGradiantColorMask(),embeded_image_path="core/images/logo.png")
-    filename = os.path.join(TMPPATH, '{}'.format(datetime.datetime.now().strftime("%d_%m_%Y_%H_%M_%S")))
+    filename = os.path.join(TMPPATH, '{}'.format(h.hexdigest()))
     img.save(filename + '_pregen.png')
     # img.save(filename + '.png')
     procImg(filename)
@@ -30,10 +33,12 @@ def genURL(data):
     return my_string
 
 def genText(data):
+    h = hashlib.md5()
+    h.update(datetime.datetime.now().strftime("%d_%m_%Y_%H_%M_%S_%f"))
     img = qr.make(data)
     #type(img)
     img = qr.make_image(image_factory= StyledPilImage, module_drawer=CircleModuleDrawer(), color_mask=SquareGradiantColorMask(),embeded_image_path="core/images/logo.png")
-    filename = os.path.join(TMPPATH, '{}'.format(datetime.datetime.now().strftime("%d_%m_%Y_%H_%M_%S")))
+    filename = os.path.join(TMPPATH, '{}'.format(h.hexdigest()))
     img.save(filename + '_pregen.png')
     # img.save(filename + '.png')
     procImg(filename)
@@ -43,11 +48,13 @@ def genText(data):
     return my_string
 
 def genWifi(ssid,password,type):
+    h = hashlib.md5()
+    h.update(datetime.datetime.now().strftime("%d_%m_%Y_%H_%M_%S_%f"))
     data = "WIFI:T:{type};S:{ssid};P:{password};;".format(type=type, ssid=ssid, password=password)
     img = qr.add_data(data)
     #type(img)
     img = qr.make_image(image_factory= StyledPilImage, module_drawer=CircleModuleDrawer(), color_mask=SquareGradiantColorMask(),embeded_image_path="core/images/logo.png")
-    filename = os.path.join(TMPPATH, '{}'.format(datetime.datetime.now().strftime("%d_%m_%Y_%H_%M_%S")))
+    filename = os.path.join(TMPPATH, '{}'.format(h.hexdigest()))
     img.save(filename + '_pregen.png')
     # img.save(filename + '.png')
     procImg(filename)
@@ -57,11 +64,13 @@ def genWifi(ssid,password,type):
     return my_string
 
 def genSms(phonenumber):
+    h = hashlib.md5()
+    h.update(datetime.datetime.now().strftime("%d_%m_%Y_%H_%M_%S_%f"))
     data = 'sms:+' + phonenumber
     img = qr.add_data(data)
     #type(img)
     img = qr.make_image(image_factory= StyledPilImage, module_drawer=CircleModuleDrawer(), color_mask=SquareGradiantColorMask(),embeded_image_path="core/images/logo.png")
-    filename = os.path.join(TMPPATH, '{}'.format(datetime.datetime.now().strftime("%d_%m_%Y_%H_%M_%S")))
+    filename = os.path.join(TMPPATH, '{}'.format(h.hexdigest()))
     img.save(filename + '_pregen.png')
     # img.save(filename + '.png')
     procImg(filename)
@@ -71,11 +80,13 @@ def genSms(phonenumber):
     return my_string
 
 def genEmail(email,subject,msg):
+    h = hashlib.md5()
+    h.update(datetime.datetime.now().strftime("%d_%m_%Y_%H_%M_%S_%f"))
     data = 'mailto:'+email+'?subject='+subject+'&body='+msg
     img = qr.add_data(data)
     #type(img)
     img = qr.make_image(image_factory= StyledPilImage, module_drawer=CircleModuleDrawer(), color_mask=SquareGradiantColorMask(),embeded_image_path="core/images/logo.png")
-    filename = os.path.join(TMPPATH, '{}'.format(datetime.datetime.now().strftime("%d_%m_%Y_%H_%M_%S")))
+    filename = os.path.join(TMPPATH, '{}'.format(h.hexdigest()))
     img.save(filename + '_pregen.png')
     # img.save(filename + '.png')
     procImg(filename)
@@ -86,6 +97,8 @@ def genEmail(email,subject,msg):
 
 
 def genVcard(data):
+    h = hashlib.md5()
+    h.update(datetime.datetime.now().strftime("%d_%m_%Y_%H_%M_%S_%f"))
     tmp = """BEGIN:VCARD
 VERSION:3.0
 N:{firstname};{lastname}
@@ -104,7 +117,7 @@ END:VCARD"""
     img = qr.add_data(tmp.format_map(data))
     #type(img)
     img = qr.make_image(image_factory= StyledPilImage, module_drawer=CircleModuleDrawer(), color_mask=SquareGradiantColorMask(),embeded_image_path="core/images/logo.png")
-    filename = os.path.join(TMPPATH, '{}'.format(datetime.datetime.now().strftime("%d_%m_%Y_%H_%M_%S")))
+    filename = os.path.join(TMPPATH, '{}'.format(h.hexdigest()))
     img.save(filename + '_pregen.png')
     # img.save(filename + '.png')
     procImg(filename)

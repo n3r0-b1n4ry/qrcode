@@ -44,4 +44,7 @@ def procImg(filename):
 	removeQrcodeBG(filename)
 	convertBackground(filename)
 	mergeLayer(filename)
+	os.remove(filename + "_rm_bg.png")
+	os.remove(filename + '_bg_transperent.png')
+	os.remove(filename + "_pregen.png")
 	print('Successfully proccess images')
