@@ -602,9 +602,15 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   top: 100px;
   width: 30%;
-  height: 50vh;
+  min-height: 50vh;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   border-radius: 2rem;
   -webkit-box-shadow: 5px 5px 50px black;
           box-shadow: 5px 5px 50px black;
@@ -670,28 +676,6 @@ body {
   opacity: 0.5;
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
-}
-
-@-webkit-keyframes efect_1 {
-  0% {
-    top: -80px;
-    left: 60%;
-  }
-  100% {
-    top: 50vh;
-    left: 100%;
-  }
-}
-
-@keyframes efect_1 {
-  0% {
-    top: -80px;
-    left: 60%;
-  }
-  100% {
-    top: 50vh;
-    left: 100%;
-  }
 }
 
 @-webkit-keyframes efect_2 {

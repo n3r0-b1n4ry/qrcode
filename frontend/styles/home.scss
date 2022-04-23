@@ -413,9 +413,11 @@ body {
     position: relative;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     top: 100px;
     width: 30%;
-    height: 50vh;
+    min-height: 50vh;
+    height: fit-content;
     border-radius: 2rem;
     box-shadow: 5px 5px 50px black;
     background: white;
@@ -472,16 +474,6 @@ body {
   }
 }
 
-@keyframes efect_1 {
-  0% {
-    top: -80px;
-    left: 60%;
-  }
-  100% {
-    top: 50vh;
-    left: 100%;
-  }
-}
 @keyframes efect_2 {
   0% {
     transform: rotate(0deg);
