@@ -182,19 +182,10 @@ function reqapi(data) {
         let qrcode = JSON.parse(xhttp.response);
         document.getElementById('qr').src = 'data:image/png;base64,' + qrcode['img'];
     }
-    xhttp.open("POST", "http://127.0.0.1:8888/submit", true);
+    xhttp.open("POST", "http://s0l1d.ml:8888/submit", true);
     xhttp.send(JSON.stringify(data));
 
 
 }
 
-// function get_Data() {
-//     setTimeout(() => {
-//         let xhr = new XMLHttpRequest();
-//         xhr.open('GET', 'http://127.0.0.1:8888/submit');
-//         xhr.onload = () => {
-//             console.log(qrcode);
-//         }
-//         xhr.send()
-//     }, 1000)
-// };
+
