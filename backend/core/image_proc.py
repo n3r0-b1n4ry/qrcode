@@ -1,8 +1,8 @@
 from PIL import Image
 import os
 
-TMPPATH = 'C:/Windows/Temp'
-# TMPPATH = '/var/tmp'
+# TMPPATH = 'C:/Windows/Temp'
+TMPPATH = '/var/tmp'
 
 def removeQrcodeBG(filename):
 	img = Image.open(filename + "_pregen.png")
