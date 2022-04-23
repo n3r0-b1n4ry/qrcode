@@ -19,7 +19,7 @@ qr = qrcode.QRCode(
 
 def genURL(data):
     h = hashlib.md5()
-    h.update(datetime.datetime.now().strftime("%d_%m_%Y_%H_%M_%S_%f"))
+    h.update(datetime.datetime.now().strftime("%d_%m_%Y_%H_%M_%S_%f").encode())
     img = qr.make(data)
     #type(img)
     img = qr.make_image(image_factory= StyledPilImage, module_drawer=CircleModuleDrawer(), color_mask=SquareGradiantColorMask(),embeded_image_path="core/images/logo.png")
@@ -34,7 +34,7 @@ def genURL(data):
 
 def genText(data):
     h = hashlib.md5()
-    h.update(datetime.datetime.now().strftime("%d_%m_%Y_%H_%M_%S_%f"))
+    h.update(datetime.datetime.now().strftime("%d_%m_%Y_%H_%M_%S_%f").encode())
     img = qr.make(data)
     #type(img)
     img = qr.make_image(image_factory= StyledPilImage, module_drawer=CircleModuleDrawer(), color_mask=SquareGradiantColorMask(),embeded_image_path="core/images/logo.png")
@@ -49,7 +49,7 @@ def genText(data):
 
 def genWifi(ssid,password,type):
     h = hashlib.md5()
-    h.update(datetime.datetime.now().strftime("%d_%m_%Y_%H_%M_%S_%f"))
+    h.update(datetime.datetime.now().strftime("%d_%m_%Y_%H_%M_%S_%f").encode())
     data = "WIFI:T:{type};S:{ssid};P:{password};;".format(type=type, ssid=ssid, password=password)
     img = qr.add_data(data)
     #type(img)
@@ -65,7 +65,7 @@ def genWifi(ssid,password,type):
 
 def genSms(phonenumber):
     h = hashlib.md5()
-    h.update(datetime.datetime.now().strftime("%d_%m_%Y_%H_%M_%S_%f"))
+    h.update(datetime.datetime.now().strftime("%d_%m_%Y_%H_%M_%S_%f").encode())
     data = 'sms:+' + phonenumber
     img = qr.add_data(data)
     #type(img)
@@ -81,7 +81,7 @@ def genSms(phonenumber):
 
 def genEmail(email,subject,msg):
     h = hashlib.md5()
-    h.update(datetime.datetime.now().strftime("%d_%m_%Y_%H_%M_%S_%f"))
+    h.update(datetime.datetime.now().strftime("%d_%m_%Y_%H_%M_%S_%f").encode())
     data = 'mailto:'+email+'?subject='+subject+'&body='+msg
     img = qr.add_data(data)
     #type(img)
@@ -98,7 +98,7 @@ def genEmail(email,subject,msg):
 
 def genVcard(data):
     h = hashlib.md5()
-    h.update(datetime.datetime.now().strftime("%d_%m_%Y_%H_%M_%S_%f"))
+    h.update(datetime.datetime.now().strftime("%d_%m_%Y_%H_%M_%S_%f").encode())
     tmp = """BEGIN:VCARD
 VERSION:3.0
 N:{firstname};{lastname}
