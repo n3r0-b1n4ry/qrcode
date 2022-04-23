@@ -71,22 +71,17 @@ function send_vcard() {
     let send_vcard = {
         'type': 'vcard',
         'data': {
-            'name': btoa(last_name.value + first_name.value),
-            'contact': {
-                'mobile': btoa(mobile.value),
-                'phone': btoa(phone.value),
-                'fax': btoa(fax.value),
-            },
+            'fname': btoa(first_name.value),
+            'lname': btoa(last_name.value),
+            'mobile': btoa(mobile.value),
+            'phone': btoa(phone.value),
+            'fax': btoa(fax.value),
             'email': btoa(email_vcard.value),
-            'company': {
-                'company_ch': btoa(company.value),
-                'job': btoa(job.value)
-            },
+            'company_ch': btoa(company.value),
+            'job': btoa(job.value),
             'street': btoa(street.value),
-            'city': {
-                'city': btoa(city.value),
-                'zip': btoa(zip.value)
-            },
+            'city': btoa(city.value),
+            'zip': btoa(zip.value),
             'state': btoa(state.value),
             'country': btoa(country.value),
             'website': btoa(website.value)

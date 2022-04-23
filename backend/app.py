@@ -40,8 +40,19 @@ def submitdata ():
         qr = genWifi(ssid=tmp['network_name'],password=tmp['password'],type=tmp['encryption'])
     elif data['type'] == 'vcard':
         tmp = {
-
+            'firstname':base64.b64decode(data['data']['fname']).decode(),
+            'lastname':base64.b64decode(data['data']['lname']).decode(),
+            'fullname':"{} {}".format(base64.b64decode(data['data']['lname']).decode(), base64.b64decode(data['data']['fname']).decode()),
+            'organize':base64.b64decode(data['data']['company_ch']).decode(),
+            'addr':"{} {}".format(base64.b64decode(data['data']['street']).decode(), base64.b64decode(data['data']['state']).decode()),
+            'city':base64.b64decode(data['data']['city']).decode(),
+            'taxcode':base64.b64decode(data['data']['zip']).decode(),
+            'country':base64.b64decode(data['data']['country']).decode(),
+            'phonenumber':base64.b64decode(data['data']['mobile']).decode(),
+            'email':base64.b64decode(data['data']['email']).decode(),
+            'website':base64.b64decode(data['data']['website']).decode()
         }
+        qr = genVcard(tmp)
     # elif data['type'] == 'text':
     # elif data['type'] == 'text':
 

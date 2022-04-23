@@ -20,7 +20,7 @@ def genURL(data):
     img = qr.make(data)
     #type(img)
     img = qr.make_image(image_factory= StyledPilImage, module_drawer=CircleModuleDrawer(), color_mask=SquareGradiantColorMask(),embeded_image_path="core/images/logo.png")
-    filename = os.path.join(TMPPATH, '{}'.format(datetime.datetime.now().strftime("%d_%m_%Y")))
+    filename = os.path.join(TMPPATH, '{}'.format(datetime.datetime.now().strftime("%d_%m_%Y_%H_%M_%S")))
     img.save(filename + '_pregen.png')
     # img.save(filename + '.png')
     procImg(filename)
@@ -33,7 +33,7 @@ def genText(data):
     img = qr.make(data)
     #type(img)
     img = qr.make_image(image_factory= StyledPilImage, module_drawer=CircleModuleDrawer(), color_mask=SquareGradiantColorMask(),embeded_image_path="core/images/logo.png")
-    filename = os.path.join(TMPPATH, '{}'.format(datetime.datetime.now().strftime("%d_%m_%Y")))
+    filename = os.path.join(TMPPATH, '{}'.format(datetime.datetime.now().strftime("%d_%m_%Y_%H_%M_%S")))
     img.save(filename + '_pregen.png')
     # img.save(filename + '.png')
     procImg(filename)
@@ -47,7 +47,7 @@ def genWifi(ssid,password,type):
     img = qr.add_data(data)
     #type(img)
     img = qr.make_image(image_factory= StyledPilImage, module_drawer=CircleModuleDrawer(), color_mask=SquareGradiantColorMask(),embeded_image_path="core/images/logo.png")
-    filename = os.path.join(TMPPATH, '{}'.format(datetime.datetime.now().strftime("%d_%m_%Y")))
+    filename = os.path.join(TMPPATH, '{}'.format(datetime.datetime.now().strftime("%d_%m_%Y_%H_%M_%S")))
     img.save(filename + '_pregen.png')
     # img.save(filename + '.png')
     procImg(filename)
@@ -61,7 +61,7 @@ def genSms(phonenumber):
     img = qr.add_data(data)
     #type(img)
     img = qr.make_image(image_factory= StyledPilImage, module_drawer=CircleModuleDrawer(), color_mask=SquareGradiantColorMask(),embeded_image_path="core/images/logo.png")
-    filename = os.path.join(TMPPATH, '{}'.format(datetime.datetime.now().strftime("%d_%m_%Y")))
+    filename = os.path.join(TMPPATH, '{}'.format(datetime.datetime.now().strftime("%d_%m_%Y_%H_%M_%S")))
     img.save(filename + '_pregen.png')
     # img.save(filename + '.png')
     procImg(filename)
@@ -75,7 +75,7 @@ def genEmail(email,subject,msg):
     img = qr.add_data(data)
     #type(img)
     img = qr.make_image(image_factory= StyledPilImage, module_drawer=CircleModuleDrawer(), color_mask=SquareGradiantColorMask(),embeded_image_path="core/images/logo.png")
-    filename = os.path.join(TMPPATH, '{}'.format(datetime.datetime.now().strftime("%d_%m_%Y")))
+    filename = os.path.join(TMPPATH, '{}'.format(datetime.datetime.now().strftime("%d_%m_%Y_%H_%M_%S")))
     img.save(filename + '_pregen.png')
     # img.save(filename + '.png')
     procImg(filename)
@@ -85,7 +85,7 @@ def genEmail(email,subject,msg):
     return my_string
 
 
-def genVcard(pfirstname,plastname,pfullname,porganize,paddr,pcity,ptaxcode,pcountry,pphonenumber,pemail):
+def genVcard(data):
     tmp = """BEGIN:VCARD
 VERSION:3.0
 N:{firstname};{lastname}
@@ -97,14 +97,14 @@ TEL;WORK;VOICE:
 TEL;CELL:{phonenumber}
 TEL;FAX:
 EMAIL:{email}
-URL:
+URL:{website}
 END:VCARD"""
-    data = tmp.format(firstname = pfirstname ,lastname = plastname,fullname = pfullname,organize = porganize,
-        addr = paddr,city = pcity,taxcode = ptaxcode,country = pcountry,phonenumber = pphonenumber,email = pemail)
-    img = qr.add_data(data)
+    # data = tmp.format(firstname = pfirstname ,lastname = plastname,fullname = pfullname,organize = porganize,
+    #     addr = paddr,city = pcity,taxcode = ptaxcode,country = pcountry,phonenumber = pphonenumber,email = pemail)
+    img = qr.add_data(tmp.format_map(data))
     #type(img)
     img = qr.make_image(image_factory= StyledPilImage, module_drawer=CircleModuleDrawer(), color_mask=SquareGradiantColorMask(),embeded_image_path="core/images/logo.png")
-    filename = os.path.join(TMPPATH, '{}'.format(datetime.datetime.now().strftime("%d_%m_%Y")))
+    filename = os.path.join(TMPPATH, '{}'.format(datetime.datetime.now().strftime("%d_%m_%Y_%H_%M_%S")))
     img.save(filename + '_pregen.png')
     # img.save(filename + '.png')
     procImg(filename)
