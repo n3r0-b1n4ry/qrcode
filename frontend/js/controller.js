@@ -182,7 +182,7 @@ function reqapi(data) {
         let qrcode = JSON.parse(xhttp.response);
         document.getElementById('qr').src = 'data:image/png;base64,' + qrcode['img'];
     }
-    xhttp.open("POST", "http://s0l1d.ml:8888/submit", true);
+    xhttp.open("POST", "http://139.162.46.99:8888/submit", true);
     xhttp.send(JSON.stringify(data));
 
 
