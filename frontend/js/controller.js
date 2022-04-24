@@ -3,7 +3,6 @@ let butt_genergate_vcard = document.querySelector('.home .container_left_input .
 let butt_genergate_text = document.querySelector('.home .container_left_input .container_menu_input_right .container_input_type #butt_genergate_text');
 let butt_genergate_email = document.querySelector('.home .container_left_input .container_menu_input_right .container_input_type #butt_genergate_email');
 let butt_genergate_wifi = document.querySelector('.home .container_left_input .container_menu_input_right .container_input_type #butt_genergate_wifi');
-let butt_genergate_facebook = document.querySelector('.home .container_left_input .container_menu_input_right .container_input_type #butt_genergate_facebook');
 let butt_genergate_pdf = document.querySelector('.home .container_left_input .container_menu_input_right .container_input_type #butt_genergate_pdf');
 let butt_genergate_image = document.querySelector('.home .container_left_input .container_menu_input_right .container_input_type #butt_genergate_image');
 // =========url===================
@@ -45,7 +44,6 @@ butt_genergate_vcard.addEventListener('click', send_vcard);
 butt_genergate_text.addEventListener('click', send_text);
 butt_genergate_email.addEventListener('click', send_email);
 butt_genergate_wifi.addEventListener('click', send_wifi);
-butt_genergate_facebook.addEventListener('click', send_fb);
 
 
 // ======= funct url==============

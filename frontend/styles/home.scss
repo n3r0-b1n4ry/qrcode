@@ -379,34 +379,6 @@ body {
           }
         }
       }
-      .container_input_type_facebook {
-        // display: none;
-        // display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        .container_input_row {
-          padding: 1rem 0.5rem;
-
-          .col_chill {
-            display: flex;
-            flex-direction: column;
-            input {
-              width: 96%;
-            }
-            label {
-              color: white;
-              text-transform: capitalize;
-              font-size: 0.8rem;
-              overflow: hidden;
-              .check {
-                width: 1rem;
-                transform: translateY(9px);
-                margin-right: 1rem;
-              }
-            }
-          }
-        }
-      }
     }
   }
   .container_right_output {
