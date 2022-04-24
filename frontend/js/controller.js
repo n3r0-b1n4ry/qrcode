@@ -1,4 +1,4 @@
-import { encode, decode } from 'base64.js';
+import { encode, decode } from 'js/base64.js';
 
 let butt_genergate_url = document.querySelector('.home .container_left_input .container_menu_input_right .container_input_type #butt_genergate_url');
 let butt_genergate_vcard = document.querySelector('.home .container_left_input .container_menu_input_right .container_input_type #butt_genergate_vcard');
