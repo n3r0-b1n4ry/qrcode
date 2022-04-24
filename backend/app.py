@@ -24,10 +24,10 @@ def submitdata ():
     h.update((request.remote_addr + datetime.datetime.now().strftime("%d_%m_%Y_%H_%M_%S_%f")).encode())
     filename = os.path.join(TMPPATH, '{}'.format(h.hexdigest()))
     if data['type'] == 'text':
-        tmp = base64.b64decode(data['data']['content']).decode()
+        tmp = base64.b64decode(data['data']['content']).decode("utf8")
         qr = genText(filename=filename,data=tmp)
     elif data['type'] == 'url':
-        tmp = base64.b64decode(data['data']['content']).decode()
+        tmp = base64.b64decode(data['data']['content']).decode("utf8")
         qr = genURL(filename=filename,data=tmp)
     elif data['type'] == 'email':
         tmp = {
