@@ -7,92 +7,91 @@ from qrcode.image.styles.moduledrawers import *
 from qrcode.image.styles.colormasks import *
 from core.image_proc import *
 
-qr = qrcode.QRCode(
-    version=4,
-    error_correction=qrcode.constants.ERROR_CORRECT_H,
-    box_size=20,
-    border=4,
-)
 
-def genURL(filename,data):
-    img = qr.add_data(data)
-    #type(img)
-    img = qr.make_image(image_factory= StyledPilImage,
-                        module_drawer=CircleModuleDrawer(),
-                        color_mask=SquareGradiantColorMask(),
-                        embeded_image_path="core/images/logo.png")
-    img.save(filename + '_pregen.png')
-    procImg(filename)
-    with open(filename + '.png','rb') as img_file:
-        my_string = base64.b64encode(img_file.read())
-    os.remove(filename + '.png')
-    return my_string
+class genQR():
+    def __init__(self, filename):
+        self.qr = qrcode.QRCode(
+            version=4,
+            error_correction=qrcode.constants.ERROR_CORRECT_H,
+            box_size=20,
+            border=4,
+        )
+        self.filename = filename
 
-def genText(filename,data):
-    img = qr.add_data(data)
-    #type(img)
-    img = qr.make_image(image_factory= StyledPilImage,
-                        module_drawer=CircleModuleDrawer(),
-                        color_mask=SquareGradiantColorMask(),
-                        embeded_image_path="core/images/logo.png")
-    img.save(filename + '_pregen.png')
-    procImg(filename)
-    with open(filename + '.png','rb') as img_file:
-        my_string = base64.b64encode(img_file.read())
-    os.remove(filename + '.png')
-    return my_string
+    def __del__(self):
+        os.remove(self.filename + '.png')
 
-def genWifi(filename,ssid,password,type):
-    data = "WIFI:T:{type};S:{ssid};P:{password};;".format(type=type, ssid=ssid, password=password)
-    img = qr.add_data(data)
-    #type(img)
-    img = qr.make_image(image_factory= StyledPilImage,
-                        module_drawer=CircleModuleDrawer(),
-                        color_mask=SquareGradiantColorMask(),
-                        embeded_image_path="core/images/logo.png")
-    img.save(filename + '_pregen.png')
-    # img.save(filename + '.png')
-    procImg(filename)
-    with open(filename + '.png','rb') as img_file:
-        my_string = base64.b64encode(img_file.read())
-    os.remove(filename + '.png')
-    return my_string
+    def genURL(self,data):
+        img = qr.add_data(data)
+        #type(img)
+        img = qr.make_image(image_factory= StyledPilImage,
+                            module_drawer=CircleModuleDrawer(),
+                            color_mask=SquareGradiantColorMask(),
+                            embeded_image_path="core/images/logo.png")
+        img.save(self.filename + '_pregen.png')
+        procImg(self.filename)
+        with open(self.filename + '.png','rb') as img_file:
+            my_string = base64.b64encode(img_file.read())
+        return my_string
 
-def genSms(filename,phonenumber):
-    data = 'sms:+' + phonenumber
-    img = qr.add_data(data)
-    #type(img)
-    img = qr.make_image(image_factory= StyledPilImage,
-                        module_drawer=CircleModuleDrawer(),
-                        color_mask=SquareGradiantColorMask(),
-                        embeded_image_path="core/images/logo.png")
-    img.save(filename + '_pregen.png')
-    # img.save(filename + '.png')
-    procImg(filename)
-    with open(filename + '.png','rb') as img_file:
-        my_string = base64.b64encode(img_file.read())
-    os.remove(filename + '.png')
-    return my_string
+    def genText(self,data):
+        img = qr.add_data(data)
+        #type(img)
+        img = qr.make_image(image_factory= StyledPilImage,
+                            module_drawer=CircleModuleDrawer(),
+                            color_mask=SquareGradiantColorMask(),
+                            embeded_image_path="core/images/logo.png")
+        img.save(self.filename + '_pregen.png')
+        procImg(self.filename)
+        with open(self.filename + '.png','rb') as img_file:
+            my_string = base64.b64encode(img_file.read())
+        return my_string
 
-def genEmail(filename,email,subject,msg):
-    data = 'mailto:'+email+'?subject='+subject+'&body='+msg
-    img = qr.add_data(data)
-    #type(img)
-    img = qr.make_image(image_factory= StyledPilImage,
-                        module_drawer=CircleModuleDrawer(),
-                        color_mask=SquareGradiantColorMask(),
-                        embeded_image_path="core/images/logo.png")
-    img.save(filename + '_pregen.png')
-    # img.save(filename + '.png')
-    procImg(filename)
-    with open(filename + '.png','rb') as img_file:
-        my_string = base64.b64encode(img_file.read())
-    os.remove(filename + '.png')
-    return my_string
+    def genWifi(self,ssid,password,type):
+        data = "WIFI:T:{type};S:{ssid};P:{password};;".format(type=type, ssid=ssid, password=password)
+        img = qr.add_data(data)
+        #type(img)
+        img = qr.make_image(image_factory= StyledPilImage,
+                            module_drawer=CircleModuleDrawer(),
+                            color_mask=SquareGradiantColorMask(),
+                            embeded_image_path="core/images/logo.png")
+        img.save(self.filename + '_pregen.png')
+        procImg(self.filename)
+        with open(self.filename + '.png','rb') as img_file:
+            my_string = base64.b64encode(img_file.read())
+        return my_string
+
+    def genSms(self,phonenumber):
+        data = 'sms:+' + phonenumber
+        img = qr.add_data(data)
+        #type(img)
+        img = qr.make_image(image_factory= StyledPilImage,
+                            module_drawer=CircleModuleDrawer(),
+                            color_mask=SquareGradiantColorMask(),
+                            embeded_image_path="core/images/logo.png")
+        img.save(self.filename + '_pregen.png')
+        procImg(self.filename)
+        with open(self.filename + '.png','rb') as img_file:
+            my_string = base64.b64encode(img_file.read())
+        return my_string
+
+    def genEmail(self,email,subject,msg):
+        data = 'mailto:'+email+'?subject='+subject+'&body='+msg
+        img = qr.add_data(data)
+        #type(img)
+        img = qr.make_image(image_factory= StyledPilImage,
+                            module_drawer=CircleModuleDrawer(),
+                            color_mask=SquareGradiantColorMask(),
+                            embeded_image_path="core/images/logo.png")
+        img.save(self.filename + '_pregen.png')
+        procImg(self.filename)
+        with open(self.filename + '.png','rb') as img_file:
+            my_string = base64.b64encode(img_file.read())
+        return my_string
 
 
-def genVcard(filename,data):
-    tmp = """BEGIN:VCARD
+    def genVcard(self,data):
+        tmp = """BEGIN:VCARD
 VERSION:3.0
 N:{firstname};{lastname}
 FN:{fullname}
@@ -105,21 +104,19 @@ TEL;FAX:
 EMAIL:{email}
 URL:{website}
 END:VCARD"""
-    # data = tmp.format(firstname = pfirstname ,lastname = plastname,fullname = pfullname,organize = porganize,
-    #     addr = paddr,city = pcity,taxcode = ptaxcode,country = pcountry,phonenumber = pphonenumber,email = pemail)
-    img = qr.add_data(tmp.format_map(data))
-    #type(img)
-    img = qr.make_image(image_factory= StyledPilImage,
-                        module_drawer=CircleModuleDrawer(),
-                        color_mask=SquareGradiantColorMask(),
-                        embeded_image_path="core/images/logo.png")
-    img.save(filename + '_pregen.png')
-    # img.save(filename + '.png')
-    procImg(filename)
-    with open(filename + '.png','rb') as img_file:
-        my_string = base64.b64encode(img_file.read())
-    os.remove(filename + '.png')
-    return my_string
+        # data = tmp.format(firstname = pfirstname ,lastname = plastname,fullname = pfullname,organize = porganize,
+        #     addr = paddr,city = pcity,taxcode = ptaxcode,country = pcountry,phonenumber = pphonenumber,email = pemail)
+        img = qr.add_data(tmp.format_map(data))
+        #type(img)
+        img = qr.make_image(image_factory= StyledPilImage,
+                            module_drawer=CircleModuleDrawer(),
+                            color_mask=SquareGradiantColorMask(),
+                            embeded_image_path="core/images/logo.png")
+        img.save(self.filename + '_pregen.png')
+        procImg(self.filename)
+        with open(self.filename + '.png','rb') as img_file:
+            my_string = base64.b64encode(img_file.read())
+        return my_string
 
 
 
