@@ -15,10 +15,12 @@ qr = qrcode.QRCode(
 )
 
 def genURL(filename,data):
-    img = qr.make(data)
+    img = qr.add_data(data)
     #type(img)
-    # img = qr.make_image(image_factory= StyledPilImage,
-    #                     embeded_image_path="core/images/logo.png")
+    img = qr.make_image(image_factory= StyledPilImage,
+                        module_drawer=CircleModuleDrawer(),
+                        color_mask=SquareGradiantColorMask(),
+                        embeded_image_path="core/images/logo.png"))
     img.save(filename + '.png')
     with open(filename + '.png','rb') as img_file:
         my_string = base64.b64encode(img_file.read())
@@ -26,10 +28,12 @@ def genURL(filename,data):
     return my_string
 
 def genText(filename,data):
-    img = qr.make(data)
+    img = qr.add_data(data)
     #type(img)
-    # img = qr.make_image(image_factory= StyledPilImage,
-    #                     embeded_image_path="core/images/logo.png")
+    img = qr.make_image(image_factory= StyledPilImage,
+                        module_drawer=CircleModuleDrawer(),
+                        color_mask=SquareGradiantColorMask(),
+                        embeded_image_path="core/images/logo.png"))
     img.save(filename + '.png')
     with open(filename + '.png','rb') as img_file:
         my_string = base64.b64encode(img_file.read())
