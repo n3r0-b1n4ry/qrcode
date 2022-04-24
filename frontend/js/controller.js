@@ -32,16 +32,10 @@ let mess = document.querySelector('.home .container_left_input .container_menu_i
 // ================== wifi ==============
 let network_name = document.querySelector('.home .container_left_input .container_menu_input_right .container_input_type .container_input_row .col_chill #SSID');
 let password = document.querySelector('.home .container_left_input .container_menu_input_right .container_input_type .container_input_row .col_chill #password');
-let ssid_hidden = document.querySelector('.home .container_left_input .container_menu_input_right .container_input_type .container_input_row .col_chill #SSID_hidden');
 let select_none = document.querySelector('.home .container_left_input .container_menu_input_right .container_input_type .container_input_row .col_chill label #select_none');
 let select_WPA_WPA2 = document.querySelector('.home .container_left_input .container_menu_input_right .container_input_type .container_input_row .col_chill label #select_WPA_WPA2');
 let select_WEP = document.querySelector('.home .container_left_input .container_menu_input_right .container_input_type .container_input_row .col_chill label #select_WEP');
-// ==================== facebook ===============
-let url_fb = document.querySelector('.home .container_left_input .container_menu_input_right .container_input_type .container_input_row .col_chill #url_fb');
-let name_fb = document.querySelector('.home .container_left_input .container_menu_input_right .container_input_type .container_input_row .col_chill #name_fb');
-let title_fb = document.querySelector('.home .container_left_input .container_menu_input_right .container_input_type .container_input_row .col_chill #title_fb');
-let website_fb = document.querySelector('.home .container_left_input .container_menu_input_right .container_input_type .container_input_row .col_chill #website_fb');
-// ================ ===============
+
 let img_qr = document.querySelector('.home .container_right_output .container_img_qr #qr')
 
 // ======== event genergate =========
@@ -117,7 +111,6 @@ function send_email() {
 }
 
 // =============== funct network ============
-ssid_hidden.addEventListener('change', hidden_ssid);
 select_none.addEventListener('change', sel_none);
 select_WPA_WPA2.addEventListener('change', sel_WPA_WPA2);
 select_WEP.addEventListener('change', sel_WEP);
@@ -153,21 +146,6 @@ function send_wifi() {
     }
     // console.log(JSON.stringify(send_wifi));
     reqapi(send_wifi)
-}
-
-// ======== funct facebook ==========
-function send_fb() {
-    let send_fb = {
-        'type': 'facebook',
-        'data': {
-            'url_facebook': btoa(url_fb.value),
-            'name': btoa(name_fb.value),
-            'title': btoa(title_fb.value),
-            'website': btoa(website_fb.value)
-        }
-    }
-    // console.log(JSON.stringify(send_fb))
-    reqapi(send_fb)
 }
 
 // ========= func send req api =============
