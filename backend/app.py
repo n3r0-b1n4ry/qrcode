@@ -38,9 +38,9 @@ def submitdata ():
         tmp = {
             'email':unquote(base64.b64decode(data['data']['email']).decode('utf8')),
             'subject':unquote(base64.b64decode(data['data']['subject']).decode('utf8')),
-            'mess':unquote(base64.b64decode(data['data']['mess']).decode('utf8'))
+            'msg':unquote(base64.b64decode(data['data']['mess']).decode('utf8'))
         }
-        result = qr.genEmail(email=tmp['email'], subject=tmp['subject'], mess=tmp['mess'])
+        result = qr.genEmail(email=tmp['email'], subject=tmp['subject'], msg=tmp['msg'])
     elif data['type'] == 'wifi':
         tmp = {
             'network_name':unquote(base64.b64decode(data['data']['network_name']).decode('utf8')),
