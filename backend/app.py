@@ -26,10 +26,10 @@ def submitdata ():
     qr = genQR(os.path.join(TMPPATH, '{}'.format(h.hexdigest())))
 
     if data['type'] == 'text':
-        tmp = base64.b64decode(data['data']['content']).decode("unicode")
+        tmp = base64.b64decode(data['data']['content']).decode("utf16")
         result = qr.genText(data=tmp)
     elif data['type'] == 'url':
-        tmp = base64.b64decode(data['data']['content']).decode("unicode")
+        tmp = base64.b64decode(data['data']['content']).decode("utf16")
         if 'http://' not in tmp or 'https://' not in tmp:
             tmp = 'http://'+ tmp
         result = qr.genURL(data=tmp)
