@@ -2,6 +2,8 @@ from flask import Flask, request, jsonify, send_file
 from flask_cors import CORS
 import json
 import base64
+import hashlib
+import datetime
 
 from core.functions import *
 
@@ -18,26 +20,29 @@ def submitdata ():
 
     print(data)
     qr = None
+    h = hashlib.md5()
+    h.update(request.remote_addr + datetime.datetime.now().strftime("%d_%m_%Y_%H_%M_%S_%f").encode())
+    filename = os.path.join(TMPPATH, '{}'.format(h.hexdigest()))
     if data['type'] == 'text':
         tmp = base64.b64decode(data['data']['content']).decode()
-        qr = genText(tmp)
+        qr = genText(filename=filename,tmp)
     elif data['type'] == 'url':
         tmp = base64.b64decode(data['data']['content']).decode()
-        qr = genURL(tmp)
+        qr = genURL(filename=filename,tmp)
     elif data['type'] == 'email':
         tmp = {
             'email':base64.b64decode(data['data']['email']).decode(),
             'subject':base64.b64decode(data['data']['subject']).decode(),
             'mess':base64.b64decode(data['data']['mess']).decode()
         }
-        qr = genEmail(email=tmp['email'], subject=tmp['subject'], mess=tmp['mess'])
+        qr = genEmail(filename=filename,email=tmp['email'], subject=tmp['subject'], mess=tmp['mess'])
     elif data['type'] == 'wifi':
         tmp = {
             'network_name':base64.b64decode(data['data']['network_name']).decode(),
             'password':base64.b64decode(data['data']['password']).decode(),
             'encryption':base64.b64decode(data['data']['encryption']).decode()
         }
-        qr = genWifi(ssid=tmp['network_name'],password=tmp['password'],type=tmp['encryption'])
+        qr = genWifi(filename=filename,ssid=tmp['network_name'],password=tmp['password'],type=tmp['encryption'])
     elif data['type'] == 'vcard':
         tmp = {
             'firstname':base64.b64decode(data['data']['fname']).decode(),
@@ -52,7 +57,7 @@ def submitdata ():
             'email':base64.b64decode(data['data']['email']).decode(),
             'website':base64.b64decode(data['data']['website']).decode()
         }
-        qr = genVcard(tmp)
+        qr = genVcard(filename=filename,tmp)
     # elif data['type'] == 'text':
     # elif data['type'] == 'text':
 
