@@ -172,6 +172,8 @@ function send_fb() {
 
 // ========= func send req api =============
 function reqapi(data) {
+    document.getElementById('qr').src = '../resource/img/loading.gif';
+
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = () => {
         let qrcode = JSON.parse(xhttp.response);
