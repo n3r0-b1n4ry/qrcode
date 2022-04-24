@@ -21,9 +21,7 @@ def genURL(filename,data):
                         module_drawer=CircleModuleDrawer(),
                         color_mask=SquareGradiantColorMask(),
                         embeded_image_path="core/images/logo.png")
-    img.save(filename + '_pregen.png')
-    # img.save(filename + '.png')
-    procImg(filename)
+    img.save(filename + '.png')
     with open(filename + '.png','rb') as img_file:
         my_string = base64.b64encode(img_file.read())
     os.remove(filename + '.png')
@@ -36,9 +34,7 @@ def genText(filename,data):
                         module_drawer=CircleModuleDrawer(),
                         color_mask=SquareGradiantColorMask(),
                         embeded_image_path="core/images/logo.png")
-    img.save(filename + '_pregen.png')
-    # img.save(filename + '.png')
-    procImg(filename)
+    img.save(filename + '.png')
     with open(filename + '.png','rb') as img_file:
         my_string = base64.b64encode(img_file.read())
     os.remove(filename + '.png')
