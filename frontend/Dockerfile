@@ -1,8 +1,6 @@
 FROM python:3.8.12-alpine3.15
 
-WORKDIR /frontend
-
-COPY . .
+WORKDIR /data
 
 EXPOSE 80
-CMD ["python3", "-m", "http.server", "80", "--directory", "/frontend"]
+CMD ["python3", "-m", "http.server", "80", "--directory", "/data"]
