@@ -21,7 +21,7 @@ def submitdata ():
     print(data)
     qr = None
     h = hashlib.md5()
-    h.update(request.remote_addr + datetime.datetime.now().strftime("%d_%m_%Y_%H_%M_%S_%f").encode())
+    h.update((request.remote_addr + datetime.datetime.now().strftime("%d_%m_%Y_%H_%M_%S_%f")).encode())
     filename = os.path.join(TMPPATH, '{}'.format(h.hexdigest()))
     if data['type'] == 'text':
         tmp = base64.b64decode(data['data']['content']).decode()
