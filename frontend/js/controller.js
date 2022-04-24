@@ -87,7 +87,7 @@ function send_text() {
     let send_text = {
         'type': 'text',
         'data': {
-            'content': encode(text.value)
+            'content': b64encode(text.value)
         }
     }
     //    console.log(JSON.stringify(send_text))
