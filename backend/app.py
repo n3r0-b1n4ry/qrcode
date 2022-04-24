@@ -27,26 +27,26 @@ def submitdata ():
 
     if data['type'] == 'text':
         tmp = base64.b64decode(data['data']['content']).decode("utf8")
-        result = qr.genText(filename=filename,data=tmp)
+        result = qr.genText(data=tmp)
     elif data['type'] == 'url':
         tmp = base64.b64decode(data['data']['content']).decode("utf8")
         if 'http://' not in tmp or 'https://' not in tmp:
             tmp = 'http://'+ tmp
-        result = qr.genURL(filename=filename,data=tmp)
+        result = qr.genURL(data=tmp)
     elif data['type'] == 'email':
         tmp = {
             'email':base64.b64decode(data['data']['email']).decode(),
             'subject':base64.b64decode(data['data']['subject']).decode(),
             'mess':base64.b64decode(data['data']['mess']).decode()
         }
-        result = qr.genEmail(filename=filename,email=tmp['email'], subject=tmp['subject'], mess=tmp['mess'])
+        result = qr.genEmail(email=tmp['email'], subject=tmp['subject'], mess=tmp['mess'])
     elif data['type'] == 'wifi':
         tmp = {
             'network_name':base64.b64decode(data['data']['network_name']).decode(),
             'password':base64.b64decode(data['data']['password']).decode(),
             'encryption':base64.b64decode(data['data']['encryption']).decode()
         }
-        result = qr.genWifi(filename=filename,ssid=tmp['network_name'],password=tmp['password'],type=tmp['encryption'])
+        result = qr.genWifi(ssid=tmp['network_name'],password=tmp['password'],type=tmp['encryption'])
     elif data['type'] == 'vcard':
         tmp = {
             'firstname':base64.b64decode(data['data']['fname']).decode(),
@@ -61,7 +61,7 @@ def submitdata ():
             'email':base64.b64decode(data['data']['email']).decode(),
             'website':base64.b64decode(data['data']['website']).decode()
         }
-        result = qr.genVcard(filename=filename,data=tmp)
+        result = qr.genVcard(data=tmp)
     # elif data['type'] == 'text':
     # elif data['type'] == 'text':
 
