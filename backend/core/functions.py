@@ -22,9 +22,9 @@ class genQR():
         os.remove(self.filename + '.png')
 
     def genURL(self,data):
-        img = qr.add_data(data)
+        img = self.qr.add_data(data)
         #type(img)
-        img = qr.make_image(image_factory= StyledPilImage,
+        img = self.qr.make_image(image_factory= StyledPilImage,
                             module_drawer=CircleModuleDrawer(),
                             color_mask=SquareGradiantColorMask(),
                             embeded_image_path="core/images/logo.png")
@@ -35,9 +35,9 @@ class genQR():
         return my_string
 
     def genText(self,data):
-        img = qr.add_data(data)
+        img = self.qr.add_data(data)
         #type(img)
-        img = qr.make_image(image_factory= StyledPilImage,
+        img = self.qr.make_image(image_factory= StyledPilImage,
                             module_drawer=CircleModuleDrawer(),
                             color_mask=SquareGradiantColorMask(),
                             embeded_image_path="core/images/logo.png")
@@ -49,9 +49,9 @@ class genQR():
 
     def genWifi(self,ssid,password,type):
         data = "WIFI:T:{type};S:{ssid};P:{password};;".format(type=type, ssid=ssid, password=password)
-        img = qr.add_data(data)
+        img = self.qr.add_data(data)
         #type(img)
-        img = qr.make_image(image_factory= StyledPilImage,
+        img = self.qr.make_image(image_factory= StyledPilImage,
                             module_drawer=CircleModuleDrawer(),
                             color_mask=SquareGradiantColorMask(),
                             embeded_image_path="core/images/logo.png")
@@ -63,9 +63,9 @@ class genQR():
 
     def genSms(self,phonenumber):
         data = 'sms:+' + phonenumber
-        img = qr.add_data(data)
+        img = self.qr.add_data(data)
         #type(img)
-        img = qr.make_image(image_factory= StyledPilImage,
+        img = self.qr.make_image(image_factory= StyledPilImage,
                             module_drawer=CircleModuleDrawer(),
                             color_mask=SquareGradiantColorMask(),
                             embeded_image_path="core/images/logo.png")
@@ -77,9 +77,9 @@ class genQR():
 
     def genEmail(self,email,subject,msg):
         data = 'mailto:'+email+'?subject='+subject+'&body='+msg
-        img = qr.add_data(data)
+        img = self.qr.add_data(data)
         #type(img)
-        img = qr.make_image(image_factory= StyledPilImage,
+        img = self.qr.make_image(image_factory= StyledPilImage,
                             module_drawer=CircleModuleDrawer(),
                             color_mask=SquareGradiantColorMask(),
                             embeded_image_path="core/images/logo.png")
@@ -106,9 +106,9 @@ URL:{website}
 END:VCARD"""
         # data = tmp.format(firstname = pfirstname ,lastname = plastname,fullname = pfullname,organize = porganize,
         #     addr = paddr,city = pcity,taxcode = ptaxcode,country = pcountry,phonenumber = pphonenumber,email = pemail)
-        img = qr.add_data(tmp.format_map(data))
+        img = self.qr.add_data(tmp.format_map(data))
         #type(img)
-        img = qr.make_image(image_factory= StyledPilImage,
+        img = self.qr.make_image(image_factory= StyledPilImage,
                             module_drawer=CircleModuleDrawer(),
                             color_mask=SquareGradiantColorMask(),
                             embeded_image_path="core/images/logo.png")
