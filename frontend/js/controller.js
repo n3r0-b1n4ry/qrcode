@@ -1,3 +1,5 @@
+import { encode, decode } from 'base64.js';
+
 let butt_genergate_url = document.querySelector('.home .container_left_input .container_menu_input_right .container_input_type #butt_genergate_url');
 let butt_genergate_vcard = document.querySelector('.home .container_left_input .container_menu_input_right .container_input_type #butt_genergate_vcard');
 let butt_genergate_text = document.querySelector('.home .container_left_input .container_menu_input_right .container_input_type #butt_genergate_text');
@@ -87,7 +89,7 @@ function send_text() {
     let send_text = {
         'type': 'text',
         'data': {
-            'content': btoa(text.value)
+            'content': encode(text.value)
         }
     }
     //    console.log(JSON.stringify(send_text))
