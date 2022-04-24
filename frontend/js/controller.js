@@ -51,7 +51,7 @@ function send_url() {
     let send_url = {
         'type': 'url',
         'data': {
-            'content': btoa(textarea_input.value),
+            'content': b64encode(textarea_input.value),
         }
     }
     //    console.log(JSON.stringify(send_url))
@@ -63,20 +63,20 @@ function send_vcard() {
     let send_vcard = {
         'type': 'vcard',
         'data': {
-            'fname': btoa(first_name.value),
-            'lname': btoa(last_name.value),
-            'mobile': btoa(mobile.value),
-            'phone': btoa(phone.value),
-            'fax': btoa(fax.value),
-            'email': btoa(email_vcard.value),
-            'company_ch': btoa(company.value),
-            'job': btoa(job.value),
-            'street': btoa(street.value),
-            'city': btoa(city.value),
-            'zip': btoa(zip.value),
-            'state': btoa(state.value),
-            'country': btoa(country.value),
-            'website': btoa(website.value)
+            'fname': b64encode(first_name.value),
+            'lname': b64encode(last_name.value),
+            'mobile': b64encode(mobile.value),
+            'phone': b64encode(phone.value),
+            'fax': b64encode(fax.value),
+            'email': b64encode(email_vcard.value),
+            'company_ch': b64encode(company.value),
+            'job': b64encode(job.value),
+            'street': b64encode(street.value),
+            'city': b64encode(city.value),
+            'zip': b64encode(zip.value),
+            'state': b64encode(state.value),
+            'country': b64encode(country.value),
+            'website': b64encode(website.value)
         }
     }
     //    console.log(JSON.stringify(send_vcard))
@@ -99,9 +99,9 @@ function send_email() {
     let send_email = {
         'type': 'email',
         'date': {
-            'email': btoa(email_email.value),
-            'subject': btoa(subject.value),
-            'mess': btoa(mess.value)
+            'email': b64encode(email_email.value),
+            'subject': b64encode(subject.value),
+            'mess': b64encode(mess.value)
         }
     }
     // console.log(JSON.stringify(send_email))
@@ -137,9 +137,9 @@ function send_wifi() {
     let send_wifi = {
         'type': 'wifi',
         'data': {
-            'network_name': btoa(network_name.value),
-            'password': btoa(password.value),
-            'encryption': btoa(select_encryption)
+            'network_name': b64encode(network_name.value),
+            'password': b64encode(password.value),
+            'encryption': b64encode(select_encryption)
         }
     }
     // console.log(JSON.stringify(send_wifi));
@@ -147,6 +147,11 @@ function send_wifi() {
 }
 
 // ========= func send req api =============
+
+function b64encode(text) {
+    return window.btoa(unescape(encodeURIComponent(text)));
+}
+
 function reqapi(data) {
     document.getElementById('qr').src = '../resource/img/loading.gif';
 
