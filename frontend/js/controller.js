@@ -98,7 +98,7 @@ function send_text() {
 function send_email() {
     let send_email = {
         'type': 'email',
-        'date': {
+        'data': {
             'email': b64encode(email_email.value),
             'subject': b64encode(subject.value),
             'mess': b64encode(mess.value)
