@@ -28,6 +28,8 @@ def submitdata ():
         qr = genText(filename=filename,data=tmp)
     elif data['type'] == 'url':
         tmp = base64.b64decode(data['data']['content']).decode("utf8")
+        if 'http://' not in tmp or 'https://' not in tmp:
+            tmp = 'http://'+ tmp
         qr = genURL(filename=filename,data=tmp)
     elif data['type'] == 'email':
         tmp = {
