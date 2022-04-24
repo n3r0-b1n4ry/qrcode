@@ -27,40 +27,40 @@ def submitdata ():
     qr = genQR(os.path.join(TMPPATH, '{}'.format(h.hexdigest())))
 
     if data['type'] == 'text':
-        tmp = unquote(base64.b64decode(data['data']['content'])).decode("latin_1")
+        tmp = unquote(base64.b64decode(data['data']['content']).decode('latin_1'))
         result = qr.genText(data=tmp)
     elif data['type'] == 'url':
-        tmp = unquote(base64.b64decode(data['data']['content'])).decode("latin_1")
+        tmp = unquote(base64.b64decode(data['data']['content']).decode('latin_1'))
         if 'http://' not in tmp or 'https://' not in tmp:
             tmp = 'http://'+ tmp
         result = qr.genURL(data=tmp)
     elif data['type'] == 'email':
         tmp = {
-            'email':unquote(base64.b64decode(data['data']['email'])).decode('latin_1'),
-            'subject':unquote(base64.b64decode(data['data']['subject'])).decode('latin_1'),
-            'mess':unquote(base64.b64decode(data['data']['mess'])).decode('latin_1')
+            'email':unquote(base64.b64decode(data['data']['email']).decode('latin_1')),
+            'subject':unquote(base64.b64decode(data['data']['subject']).decode('latin_1')),
+            'mess':unquote(base64.b64decode(data['data']['mess']).decode('latin_1'))
         }
         result = qr.genEmail(email=tmp['email'], subject=tmp['subject'], mess=tmp['mess'])
     elif data['type'] == 'wifi':
         tmp = {
-            'network_name':unquote(base64.b64decode(data['data']['network_name'])).decode('latin_1'),
-            'password':unquote(base64.b64decode(data['data']['password'])).decode('latin_1'),
-            'encryption':unquote(base64.b64decode(data['data']['encryption'])).decode('latin_1')
+            'network_name':unquote(base64.b64decode(data['data']['network_name']).decode('latin_1')),
+            'password':unquote(base64.b64decode(data['data']['password']).decode('latin_1')),
+            'encryption':unquote(base64.b64decode(data['data']['encryption']).decode('latin_1'))
         }
         result = qr.genWifi(ssid=tmp['network_name'],password=tmp['password'],type=tmp['encryption'])
     elif data['type'] == 'vcard':
         tmp = {
-            'firstname':unquote(base64.b64decode(data['data']['fname'])).decode('latin_1'),
-            'lastname':unquote(base64.b64decode(data['data']['lname'])).decode('latin_1'),
-            'fullname':"{} {}".format(unquote(base64.b64decode(data['data']['lname'])).decode('latin_1'), unquote(base64.b64decode(data['data']['fname'])).decode('latin_1')),
-            'organize':unquote(base64.b64decode(data['data']['company_ch'])).decode('latin_1'),
-            'addr':"{} {}".format(unquote(base64.b64decode(data['data']['street'])).decode('latin_1'), unquote(base64.b64decode(data['data']['state'])).decode('latin_1')),
-            'city':unquote(base64.b64decode(data['data']['city'])).decode('latin_1'),
-            'taxcode':unquote(base64.b64decode(data['data']['zip'])).decode('latin_1'),
-            'country':unquote(base64.b64decode(data['data']['country'])).decode('latin_1'),
-            'phonenumber':unquote(base64.b64decode(data['data']['mobile'])).decode('latin_1'),
-            'email':unquote(base64.b64decode(data['data']['email'])).decode('latin_1'),
-            'website':unquote(base64.b64decode(data['data']['website'])).decode('latin_1')
+            'firstname':unquote(base64.b64decode(data['data']['fname']).decode('latin_1')),
+            'lastname':unquote(base64.b64decode(data['data']['lname']).decode('latin_1')),
+            'fullname':"{} {}".format(unquote(base64.b64decode(data['data']['lname'])).decode('latin_1'), unquote(base64.b64decode(data['data']['fname']).decode('latin_1'))),
+            'organize':unquote(base64.b64decode(data['data']['company_ch']).decode('latin_1')),
+            'addr':"{} {}".format(unquote(base64.b64decode(data['data']['street'])).decode('latin_1'), unquote(base64.b64decode(data['data']['state']).decode('latin_1'))),
+            'city':unquote(base64.b64decode(data['data']['city']).decode('latin_1')),
+            'taxcode':unquote(base64.b64decode(data['data']['zip']).decode('latin_1')),
+            'country':unquote(base64.b64decode(data['data']['country']).decode('latin_1')),
+            'phonenumber':unquote(base64.b64decode(data['data']['mobile']).decode('latin_1')),
+            'email':unquote(base64.b64decode(data['data']['email']).decode('latin_1')),
+            'website':unquote(base64.b64decode(data['data']['website']).decode('latin_1'))
         }
         result = qr.genVcard(data=tmp)
     # elif data['type'] == 'text':
