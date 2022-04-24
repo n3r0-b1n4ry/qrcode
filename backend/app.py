@@ -25,10 +25,10 @@ def submitdata ():
     filename = os.path.join(TMPPATH, '{}'.format(h.hexdigest()))
     if data['type'] == 'text':
         tmp = base64.b64decode(data['data']['content']).decode()
-        qr = genText(filename=filename,tmp)
+        qr = genText(filename=filename,data=tmp)
     elif data['type'] == 'url':
         tmp = base64.b64decode(data['data']['content']).decode()
-        qr = genURL(filename=filename,tmp)
+        qr = genURL(filename=filename,data=tmp)
     elif data['type'] == 'email':
         tmp = {
             'email':base64.b64decode(data['data']['email']).decode(),
@@ -57,7 +57,7 @@ def submitdata ():
             'email':base64.b64decode(data['data']['email']).decode(),
             'website':base64.b64decode(data['data']['website']).decode()
         }
-        qr = genVcard(filename=filename,tmp)
+        qr = genVcard(filename=filename,data=tmp)
     # elif data['type'] == 'text':
     # elif data['type'] == 'text':
 
